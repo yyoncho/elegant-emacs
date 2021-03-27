@@ -157,28 +157,28 @@ background color that is barely perceptible."
   (let* ((available-width (- (window-width) (length left) )))
     (format (format "%%s %%%ds" available-width) left right)))
 (setq-default mode-line-format
-     '((:eval
-       (mode-line-render
-       (format-mode-line (list
-         (propertize "☰" 'face `(:inherit mode-line-buffer-id)
-                         'help-echo "Mode(s) menu"
-                         'mouse-face 'mode-line-highlight
-                         'local-map   mode-line-major-mode-keymap)
-         " %b "
-         (if (and buffer-file-name (buffer-modified-p))
-             (propertize "(modified)" 'face `(:inherit face-faded)))))
-       (format-mode-line
-        (propertize "%4l:%2c" 'face `(:inherit face-faded)))))))
+              '((:eval
+                 (mode-line-render
+                  (format-mode-line (list
+                                     (propertize "☰" 'face `(:inherit mode-line-buffer-id)
+                                                 'help-echo "Mode(s) menu"
+                                                 'mouse-face 'mode-line-highlight
+                                                 'local-map   mode-line-major-mode-keymap)
+                                     " %b "
+                                     (if (and buffer-file-name (buffer-modified-p))
+                                         (propertize "(modified)" 'face `(:inherit face-faded)))))
+                  (format-mode-line
+                   (propertize "%4l:%2c" 'face `(:inherit face-faded)))))))
 ;;; -------------------------------------------------------------------
 
 
 ;;; Set modeline at the top
 ;;; -------------------------------------------------------------------
-(setq-default header-line-format mode-line-format)
-(setq-default mode-line-format'(""))
+;; (setq-default header-line-format mode-line-format)
+;; (setq-default mode-line-format'(""))
 ;;; -------------------------------------------------------------------
 
-              
+
 ;;; Vertical window divider
 ;;; -------------------------------------------------------------------
 (setq window-divider-default-right-width 3)
@@ -192,15 +192,15 @@ background color that is barely perceptible."
 (defun set-modeline-faces ()
   "Mode line at top."
   (set-face 'header-line                                 'face-strong)
-  (set-face-attribute 'header-line nil
-                                :underline (face-foreground 'default))
-  (set-face-attribute 'mode-line nil
-                      :height 10
-                      :underline (face-foreground 'default)
-                      :overline nil
-                      :box nil 
-                      :foreground (face-background 'default)
-                      :background (face-background 'default))
+  ;; (set-face-attribute 'header-line nil
+  ;;                     :underline (face-foreground 'default))
+  ;; (set-face-attribute 'mode-line nil
+  ;;                     :height 10
+  ;;                     :underline (face-foreground 'default)
+  ;;                     :overline nil
+  ;;                     :box nil
+  ;;                     :foreground (face-background 'default)
+  ;;                     :background (face-background 'default))
   (set-face 'mode-line-inactive                            'mode-line)
   (set-face-attribute 'cursor nil
                       :background (face-foreground 'default))
@@ -386,20 +386,20 @@ background color that is barely perceptible."
 
 ;; Button function (hardcoded)
 ;;; -------------------------------------------------------------------
-  (defun package-make-button (text &rest properties)
-    "Insert button labeled TEXT with button PROPERTIES at point.
+(defun package-make-button (text &rest properties)
+  "Insert button labeled TEXT with button PROPERTIES at point.
 PROPERTIES are passed to `insert-text-button', for which this
 function is a convenience wrapper used by `describe-package-1'."
-    (let ((button-text (if (display-graphic-p)
-                           text (concat "[" text "]")))
-          (button-face (if (display-graphic-p)
-                           '(:box `(:line-width 1
-                             :color "#999999":style nil)
-                            :foreground "#999999"
-                            :background "#F0F0F0")
-                         'link)))
-      (apply #'insert-text-button button-text
-             'face button-face 'follow-link t properties)))
+  (let ((button-text (if (display-graphic-p)
+                         text (concat "[" text "]")))
+        (button-face (if (display-graphic-p)
+                         '(:box `(:line-width 1
+                                              :color "#999999":style nil)
+                                :foreground "#999999"
+                                :background "#F0F0F0")
+                       'link)))
+    (apply #'insert-text-button button-text
+           'face button-face 'follow-link t properties)))
 ;;; -------------------------------------------------------------------
 
 
@@ -410,7 +410,7 @@ function is a convenience wrapper used by `describe-package-1'."
 ;;; -------------------------------------------------------------------
 
 
-;; Ido 
+;; Ido
 ;;; -------------------------------------------------------------------
 '(ido-first-match                            'face-salient)
 '(ido-only-match                               'face-faded)
@@ -437,22 +437,22 @@ function is a convenience wrapper used by `describe-package-1'."
 ;;; -------------------------------------------------------------------
 '(term-bold                                   'face-strong)
 '(set-face-attribute 'term-color-black nil
-		     :foreground (face-foreground 'default)
-		     :background (face-foreground 'default))
+		                 :foreground (face-foreground 'default)
+		                 :background (face-foreground 'default))
 '(set-face-attribute 'term-color-white nil
-		     :foreground "white" :background "white")
+		                 :foreground "white" :background "white")
 '(set-face-attribute 'term-color-blue nil
-		     :foreground "#42A5F5" :background "#BBDEFB")
+		                 :foreground "#42A5F5" :background "#BBDEFB")
 '(set-face-attribute 'term-color-cyan nil
-		     :foreground "#26C6DA" :background "#B2EBF2")
+		                 :foreground "#26C6DA" :background "#B2EBF2")
 '(set-face-attribute 'term-color-green nil
-		     :foreground "#66BB6A" :background "#C8E6C9")
+		                 :foreground "#66BB6A" :background "#C8E6C9")
 '(set-face-attribute 'term-color-magenta nil
-		     :foreground "#AB47BC" :background "#E1BEE7")
+		                 :foreground "#AB47BC" :background "#E1BEE7")
 '(set-face-attribute 'term-color-red nil
-		     :foreground "#EF5350" :background "#FFCDD2")
+		                 :foreground "#EF5350" :background "#FFCDD2")
 '(set-face-attribute 'term-color-yellow nil
-		     :foreground "#FFEE58" :background "#FFF9C4")
+		                 :foreground "#FFEE58" :background "#FFF9C4")
 ;;; -------------------------------------------------------------------
 
 

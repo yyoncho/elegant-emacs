@@ -32,12 +32,12 @@
 
 
 ;; Font and frame size
-(set-face-font 'default "Roboto Mono Light 14")
+(set-face-font 'default "Roboto Mono Light 12")
 (setq default-frame-alist
       (append (list '(width  . 72) '(height . 40)
                     '(vertical-scroll-bars . nil)
                     '(internal-border-width . 24)
-                    '(font . "Roboto Mono Light 14"))))
+                    '(font . "Roboto Mono Light 12"))))
 (set-frame-parameter (selected-frame)
                      'internal-border-width 24)
 
@@ -45,7 +45,7 @@
 (setq-default line-spacing 0)
 
 ;; Underline line at descent position, not baseline position
-(setq x-underline-at-descent-line t)
+;; (setq x-underline-at-descent-line t)
 
 ;; No ugly button for checkboxes
 (setq widget-image-enable nil)
@@ -59,6 +59,7 @@
 (setq ring-bell-function 'ignore)
 
 ;; No Tooltips
+(tooltip-mode 0)
 (tooltip-mode 0)
 
 ;; Paren mode is part of the theme
@@ -80,13 +81,13 @@
 (defun set-face (face style)
   "Reset a face and make it inherit style."
   (set-face-attribute face nil
-   :foreground 'unspecified :background 'unspecified
-   :family     'unspecified :slant      'unspecified
-   :weight     'unspecified :height     'unspecified
-   :underline  'unspecified :overline   'unspecified
-   :box        'unspecified :inherit    style))
+                      :foreground 'unspecified :background 'unspecified
+                      :family     'unspecified :slant      'unspecified
+                      :weight     'unspecified :height     'unspecified
+                      :underline  'unspecified :overline   'unspecified
+                      :box        'unspecified :inherit    style))
 
-;; A theme is fully defined by these six faces 
+;; A theme is fully defined by these six faces
 (defgroup elegance nil
   "Faces for the elegance theme"
   :prefix "face-")
@@ -95,11 +96,11 @@
 (setq custom-unlispify-remove-prefixes t)
 
 (defface face-critical nil
-"Critical face is for information that requires immediate action.
+  "Critical face is for information that requires immediate action.
 It should be of high constrast when compared to other faces. This
 can be realized (for example) by setting an intense background
 color, typically a shade of red. It must be used scarcely."
-:group 'elegance)
+  :group 'elegance)
 
 (defface face-popout nil
 "Popout face is used for information that needs attention.
@@ -151,25 +152,25 @@ background color that is barely perceptible."
   (let* ((available-width (- (window-width) (length left) )))
     (format (format "%%s %%%ds" available-width) left right)))
 (setq-default mode-line-format
-     '((:eval
-       (mode-line-render
-       (format-mode-line (list
-         (propertize "☰" 'face `(:inherit mode-line-buffer-id)
-                         'help-echo "Mode(s) menu"
-                         'mouse-face 'mode-line-highlight
-                         'local-map   mode-line-major-mode-keymap)
-         " %b "
-         (if (and buffer-file-name (buffer-modified-p))
-             (propertize "(modified)" 'face `(:inherit face-faded)))))
-       (format-mode-line
-        (propertize "%4l:%2c  " 'face `(:inherit face-faded)))))))
+              '((:eval
+                 (mode-line-render
+                  (format-mode-line (list
+                                     (propertize "☰" 'face `(:inherit mode-line-buffer-id)
+                                                 'help-echo "Mode(s) menu"
+                                                 'mouse-face 'mode-line-highlight
+                                                 'local-map   mode-line-major-mode-keymap)
+                                     " %b "
+                                     (if (and buffer-file-name (buffer-modified-p))
+                                         (propertize "(modified)" 'face `(:inherit face-faded)))))
+                  (format-mode-line
+                   (propertize "%4l:%2c  " 'face `(:inherit face-faded)))))))
 
 
 ;; Comment if you want to keep the modeline at the bottom
-(setq-default header-line-format mode-line-format)
-(setq-default mode-line-format'(""))
+;; (setq-default header-line-format mode-line-format)
+;; (setq-default mode-line-format'(""))
 
-              
+
 ;; Vertical window divider
 (setq window-divider-default-right-width 3)
 (setq window-divider-default-places 'right-only)
@@ -186,11 +187,11 @@ background color that is barely perceptible."
                       :height 10
                       :underline (face-foreground 'default)
                       :overline nil
-                      :box nil 
+                      :box nil
                       :foreground (face-background 'default)
                       :background (face-background 'default))
   (set-face 'mode-line-inactive                            'mode-line)
-  
+
   ;; Mode line at bottom
   ;; (set-face 'header-line                                 'face-strong)
   ;; (set-face-attribute 'mode-line nil
@@ -250,7 +251,7 @@ background color that is barely perceptible."
                              :style nil)
                       :inverse-video nil))
 
-;; Light theme 
+;; Light theme
 (defun elegance-light ()
     (setq frame-background-mode 'light)
     (set-background-color "#ffffff")
@@ -270,7 +271,7 @@ background color that is barely perceptible."
     (set-face-attribute 'face-subtle nil :background "#f0f0f0")
 
     (set-modeline-faces)
-    
+
     (with-eval-after-load 'cus-edit (set-button-faces)))
 
 ;; Dark theme
@@ -295,7 +296,7 @@ background color that is barely perceptible."
     (with-eval-after-load 'cus-edit (set-button-faces)))
 
 ;; Set theme
-(elegance-dark)
+(elegance-light)
 
 ;; Structural
 (set-face 'bold                                          'face-strong)
@@ -437,7 +438,7 @@ function is a convenience wrapper used by `describe-package-1'."
   (set-face 'flyspell-duplicate                         'face-popout)
   (set-face 'flyspell-incorrect                         'face-popout))
 
-;; Ido 
+;; Ido
 (with-eval-after-load 'ido
   (set-face 'ido-first-match                            'face-salient)
   (set-face 'ido-only-match                               'face-faded)
@@ -601,4 +602,3 @@ function is a convenience wrapper used by `describe-package-1'."
   (set-face 'mu4e-warning-face                            'face-faded))
 
 (provide 'elegance)
-
