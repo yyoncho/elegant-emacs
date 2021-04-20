@@ -24,7 +24,7 @@
 (setq-default indent-tabs-mode nil)
 (setq pop-up-windows nil)
 (tool-bar-mode 0)
-(tooltip-mode  0)
+(menu-bar-mode 0)
 (scroll-bar-mode 0)
 
 (defun custom/kill-this-buffer ()
@@ -33,10 +33,5 @@
 
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
-
-(save-place-mode 1)
-
-(global-set-key (kbd "C-z") 'undo)
-(global-set-key (kbd "C-x C-x") 'execute-extended-command)
 
 (provide 'sanity)

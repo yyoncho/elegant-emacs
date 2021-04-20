@@ -279,7 +279,7 @@ background color that is barely perceptible."
 (set-face 'trailing-whitespace                           'face-subtle)
 (set-face 'show-paren-match                              'face-popout)
 (set-face 'show-paren-mismatch                           'face-normal)
-(set-face-attribute 'tooltip nil                         :height 0.85)
+(set-face-attribute 'tooltip 'face-subtle)
 ;;; -------------------------------------------------------------------
 
 

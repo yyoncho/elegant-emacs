@@ -58,12 +58,7 @@
 (setq visible-bell t)
 (setq ring-bell-function 'ignore)
 
-;; No Tooltips
-(tooltip-mode 0)
-(tooltip-mode 0)
-
 ;; Paren mode is part of the theme
-(show-paren-mode t)
 
 ;; No fringe but nice glyphs for truncated and wrapped lines
 (fringe-mode '(0 . 0))
@@ -103,42 +98,42 @@ color, typically a shade of red. It must be used scarcely."
   :group 'elegance)
 
 (defface face-popout nil
-"Popout face is used for information that needs attention.
+  "Popout face is used for information that needs attention.
 To achieve such effect, the hue of the face has to be
 sufficiently different from other faces such that it attracts
 attention through the popout effect."
-:group 'elegance)
+  :group 'elegance)
 
 (defface face-strong nil
-"Strong face is used for information of a structural nature.
+  "Strong face is used for information of a structural nature.
 It has to be the same color as the default color and only the
 weight differs by one level (e.g., light/regular or
 regular/bold). IT is generally used for titles, keywords,
 directory, etc."
-:group 'elegance)
+  :group 'elegance)
 
 (defface face-salient nil
-"Salient face is used for information that are important.
+  "Salient face is used for information that are important.
 To suggest the information is of the same nature but important,
 the face uses a different hue with approximately the same
 intensity as the default face. This is typically used for links."
 
-:group 'elegance)
+  :group 'elegance)
 
 (defface face-faded nil
-"Faded face is for information that are less important.
+  "Faded face is for information that are less important.
 It is made by using the same hue as the default but with a lesser
 intensity than the default. It can be used for comments,
 secondary information and also replace italic (which is generally
 abused anyway)."
-:group 'elegance)
+  :group 'elegance)
 
 (defface face-subtle nil
-"Subtle face is used to suggest a physical area on the screen.
+  "Subtle face is used to suggest a physical area on the screen.
 It is important to not disturb too strongly the reading of
 information and this can be made by setting a very light
 background color that is barely perceptible."
-:group 'elegance)
+  :group 'elegance)
 
 
 ;; Mode line (this might be slow because of the "☰" that requires substitution)
@@ -159,9 +154,12 @@ background color that is barely perceptible."
                                                  'help-echo "Mode(s) menu"
                                                  'mouse-face 'mode-line-highlight
                                                  'local-map   mode-line-major-mode-keymap)
-                                     " %b "
-                                     (if (and buffer-file-name (buffer-modified-p))
-                                         (propertize "(modified)" 'face `(:inherit face-faded)))))
+
+                                     " %b"
+                                     (when (and buffer-file-name (buffer-modified-p))
+                                       (propertize "(*)" 'face `(:inherit face-faded)))
+                                     " "
+                                     'global-mode-string))
                   (format-mode-line
                    (propertize "%4l:%2c  " 'face `(:inherit face-faded)))))))
 
@@ -178,43 +176,36 @@ background color that is barely perceptible."
 
 ;; Modeline
 (defun set-modeline-faces ()
-
-  ;; Mode line at top
-  (set-face 'header-line                                 'face-strong)
   (set-face-attribute 'header-line nil
-                                :underline (face-foreground 'default))
+                      :height 1.0
+                      :overline (face-background 'default)
+                      :underline nil
+                      :foreground (face-foreground 'default)
+                      :background (face-background 'face-subtle)
+                      :box `(:line-width 2
+                                         :color ,(face-background 'face-subtle)
+                                         :style nil))
   (set-face-attribute 'mode-line nil
-                      :height 10
-                      :underline (face-foreground 'default)
-                      :overline nil
-                      :box nil
-                      :foreground (face-background 'default)
-                      :background (face-background 'default))
-  (set-face 'mode-line-inactive                            'mode-line)
-
-  ;; Mode line at bottom
-  ;; (set-face 'header-line                                 'face-strong)
-  ;; (set-face-attribute 'mode-line nil
-  ;;                     :height 1.0
-  ;;                     :overline (face-background 'default)
-  ;;                     :underline nil
-  ;;                     :foreground (face-foreground 'default)
-  ;;                     :background (face-background 'face-subtle)
-  ;;                     :box `(:line-width 2
-  ;;                            :color ,(face-background 'face-subtle)
-  ;;                            :style nil))
-  ;; (set-face 'mode-line-highlight '(face-popout mode-line))
-  ;; (set-face 'mode-line-emphasis  'face-strong)
-  ;; (set-face-attribute 'mode-line-buffer-id nil :weight 'regular)
-  ;; (set-face-attribute 'mode-line-inactive nil
-  ;;                     :height 1.0
-  ;;                     :overline (face-background 'default)
-  ;;                     :underline nil
-  ;;                     :foreground (face-foreground 'face-faded)
-  ;;                     :background (face-background 'face-subtle)
-  ;;                     :box `(:line-width 2
-  ;;                            :color ,(face-background 'face-subtle)
-  ;;                            :style nil))
+                      :height 1.0
+                      :overline (face-background 'default)
+                      :underline nil
+                      :foreground (face-foreground 'default)
+                      :background (face-background 'face-subtle)
+                      :box `(:line-width 2
+                                         :color ,(face-background 'face-subtle)
+                                         :style nil))
+  (set-face 'mode-line-highlight '(face-popout mode-line))
+  (set-face 'mode-line-emphasis  'face-strong)
+  (set-face-attribute 'mode-line-buffer-id nil :weight 'regular)
+  (set-face-attribute 'mode-line-inactive nil
+                      :height 1.0
+                      :overline (face-background 'default)
+                      :underline nil
+                      :foreground (face-foreground 'face-faded)
+                      :background (face-background 'face-subtle)
+                      :box `(:line-width 2
+                                         :color ,(face-background 'face-subtle)
+                                         :style nil))
 
 
   (set-face-attribute 'cursor nil
@@ -225,6 +216,7 @@ background color that is barely perceptible."
                       :foreground (face-background 'default))
   (set-face-attribute 'window-divider-last-pixel nil
                       :foreground (face-background 'default))
+
   )
 
 ;; Buttons
@@ -233,67 +225,70 @@ background color that is barely perceptible."
                       :foreground (face-foreground 'face-faded)
                       :background (face-background 'face-subtle)
                       :box `(:line-width 1
-                             :color ,(face-foreground 'face-faded)
-                             :style nil))
+                                         :color ,(face-foreground 'face-faded)
+                                         :style nil))
   (set-face-attribute 'custom-button-mouse nil
                       :foreground (face-foreground 'default)
                       ;; :background (face-foreground 'face-faded)
                       :inherit 'custom-button
                       :box `(:line-width 1
-                             :color ,(face-foreground 'face-subtle)
-                             :style nil))
+                                         :color ,(face-foreground 'face-subtle)
+                                         :style nil))
   (set-face-attribute 'custom-button-pressed nil
                       :foreground (face-background 'default)
                       :background (face-foreground 'face-salient)
                       :inherit 'face-salient
                       :box `(:line-width 1
-                             :color ,(face-foreground 'face-salient)
-                             :style nil)
+                                         :color ,(face-foreground 'face-salient)
+                                         :style nil)
                       :inverse-video nil))
 
 ;; Light theme
 (defun elegance-light ()
-    (setq frame-background-mode 'light)
-    (set-background-color "#ffffff")
-    (set-foreground-color "#333333")
-    (set-face-attribute 'default nil
-                        :foreground (face-foreground 'default)
-                        :background (face-background 'default))
-    (set-face-attribute 'face-critical nil :foreground "#ffffff"
-                                           :background "#ff6347")
-    (set-face-attribute 'face-popout nil :foreground "#ffa07a")
-    (set-face-attribute 'face-strong nil :foreground "#333333"
-                                         :weight 'regular)
-    (set-face-attribute 'face-salient nil :foreground "#00008b"
-                                          :weight 'light)
-    (set-face-attribute 'face-faded nil :foreground "#999999"
-                                        :weight 'light)
-    (set-face-attribute 'face-subtle nil :background "#f0f0f0")
+  (setq frame-background-mode 'light)
+  (set-background-color "#ffffff")
+  (set-foreground-color "#333333")
+  (set-face-attribute 'default nil
+                      :foreground (face-foreground 'default)
+                      :background (face-background 'default))
 
-    (set-modeline-faces)
+  (set-face-attribute 'face-critical nil :foreground "#ffffff"
+                      :background "#ff6347")
+  (set-face-attribute 'face-popout nil :foreground "#ffa07a")
+  (set-face-attribute 'face-strong nil :foreground "#333333"
+                      :weight 'regular)
+  (set-face-attribute 'face-salient nil :foreground "#00008b"
+                      :weight 'light)
+  (set-face-attribute 'face-faded nil :foreground "#999999"
+                      :weight 'light)
+  (set-face-attribute 'face-subtle nil :background "#f0f0f0")
 
-    (with-eval-after-load 'cus-edit (set-button-faces)))
+  (set-modeline-faces)
+
+  (set-face 'mode-line 'default)
+  (set-face 'header-line 'default)
+  (with-eval-after-load 'cus-edit (set-button-faces)))
 
 ;; Dark theme
 (defun elegance-dark ()
-    (setq frame-background-mode 'dark)
-    (set-background-color "#3f3f3f")
-    (set-foreground-color "#dcdccc")
-    (set-face-attribute 'default nil
-                        :foreground (face-foreground 'default)
-                        :background (face-background 'default))
-    (set-face-attribute 'face-critical nil :foreground "#385f38"
-                                           :background "#f8f893")
-    (set-face-attribute 'face-popout nil :foreground "#f0dfaf")
-    (set-face-attribute 'face-strong nil :foreground "#dcdccc"
-                                         :weight 'regular)
-    (set-face-attribute 'face-salient nil :foreground "#dca3a3"
-                                          :weight 'light)
-    (set-face-attribute 'face-faded nil :foreground "#777767"
-                                        :weight 'light)
-    (set-face-attribute 'face-subtle nil :background "#4f4f4f")
-    (set-modeline-faces)
-    (with-eval-after-load 'cus-edit (set-button-faces)))
+  (setq frame-background-mode 'dark)
+  (set-background-color "#3f3f3f")
+  (set-foreground-color "#dcdccc")
+  (set-face-attribute 'default nil
+                      :foreground (face-foreground 'default)
+                      :background (face-background 'default))
+  (set-face-attribute 'face-critical nil :foreground "#385f38"
+                      :background "#f8f893")
+  (set-face-attribute 'face-popout nil :foreground "#f0dfaf")
+  (set-face-attribute 'face-strong nil :foreground "#dcdccc"
+                      :weight 'regular)
+  (set-face-attribute 'face-salient nil :foreground "#dca3a3"
+                      :weight 'light)
+  (set-face-attribute 'face-faded nil :foreground "#777767"
+                      :weight 'light)
+  (set-face-attribute 'face-subtle nil :background "#4f4f4f")
+  (set-modeline-faces)
+  (with-eval-after-load 'cus-edit (set-button-faces)))
 
 ;; Set theme
 (elegance-light)
@@ -425,9 +420,9 @@ function is a convenience wrapper used by `describe-package-1'."
                            text (concat "[" text "]")))
           (button-face (if (display-graphic-p)
                            '(:box `(:line-width 1
-                             :color "#999999":style nil)
-                            :foreground "#999999"
-                            :background "#F0F0F0")
+                                                :color "#999999":style nil)
+                                  :foreground "#999999"
+                                  :background "#F0F0F0")
                          'link)))
       (apply #'insert-text-button button-text
              'face button-face 'follow-link t properties)))
@@ -462,22 +457,22 @@ function is a convenience wrapper used by `describe-package-1'."
   ;; (setq eterm-256color-disable-bold nil)
   (set-face 'term-bold                                   'face-strong)
   (set-face-attribute 'term-color-black nil
-                                :foreground (face-foreground 'default)
-                               :background (face-foreground 'default))
+                      :foreground (face-foreground 'default)
+                      :background (face-foreground 'default))
   (set-face-attribute 'term-color-white nil
-                              :foreground "white" :background "white")
+                      :foreground "white" :background "white")
   (set-face-attribute 'term-color-blue nil
-                          :foreground "#42A5F5" :background "#BBDEFB")
+                      :foreground "#42A5F5" :background "#BBDEFB")
   (set-face-attribute 'term-color-cyan nil
-                          :foreground "#26C6DA" :background "#B2EBF2")
+                      :foreground "#26C6DA" :background "#B2EBF2")
   (set-face-attribute 'term-color-green nil
-                          :foreground "#66BB6A" :background "#C8E6C9")
+                      :foreground "#66BB6A" :background "#C8E6C9")
   (set-face-attribute 'term-color-magenta nil
-                          :foreground "#AB47BC" :background "#E1BEE7")
+                      :foreground "#AB47BC" :background "#E1BEE7")
   (set-face-attribute 'term-color-red nil
-                          :foreground "#EF5350" :background "#FFCDD2")
+                      :foreground "#EF5350" :background "#FFCDD2")
   (set-face-attribute 'term-color-yellow nil
-                         :foreground "#FFEE58" :background "#FFF9C4"))
+                      :foreground "#FFEE58" :background "#FFF9C4"))
 
 ;; org-agende
 (with-eval-after-load 'org-agenda
@@ -525,8 +520,8 @@ function is a convenience wrapper used by `describe-package-1'."
   (set-face 'org-footnote                                 'face-faded)
   (set-face 'org-formula                                  'face-faded)
   (set-face 'org-headline-done                            'face-faded)
-;;  (set-face 'org-hide                                     'face-faded)
-;;  (set-face 'org-indent                                   'face-faded)
+  ;;  (set-face 'org-hide                                     'face-faded)
+  ;;  (set-face 'org-indent                                   'face-faded)
   (set-face 'org-latex-and-related                        'face-faded)
   (set-face 'org-level-1                                 'face-strong)
   (set-face 'org-level-2                                 'face-strong)
