@@ -1,5 +1,8 @@
 (load (concat (file-name-directory load-file-name) "sanity.el"))
 (load (concat (file-name-directory load-file-name) "elegance.el"))
+(load (concat (file-name-directory load-file-name) "org.el"))
+
+
 
 (setq package-selected-packages
       '(lsp-mode yasnippet lsp-treemacs helm-lsp projectile hydra flycheck company avy which-key helm-xref dap-mode posframe posframe helm-icons lsp-java all-the-icons company-quickhelp rust-mode))
@@ -64,8 +67,3 @@
                           #'company-vscode-light-icons-margin)))
   (company-quickhelp-mode)
   (yas-global-mode))
-
-(defun org-dblock-write:block-update-time (params)
-  (let ((fmt (or (plist-get params :format) "%d. %m. %Y")))
-    (insert "Last block update at: "
-            (format-time-string fmt))))

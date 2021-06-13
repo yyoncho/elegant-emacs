@@ -1,9 +1,10 @@
 
+
                   [[file:data/logo.svg]]
 
 *Welcome to Emacs*                                /GNU Emacs version/
 
-  [[https://www.gnu.org/software/emacs][Emacs]] is an  extensible, customizable, free/libre text  editor — and
+  [[https://www.gnu.org/software/emacs][Emacs]] is an extensible, customizable, free/libre text editor — and
   more. At its core is an interpreter for Emacs Lisp, a dialect of the
   Lisp programming language with extensions to support text editing.
 
@@ -13,6 +14,79 @@
   See an overview of Emacs features at [[https://gnu.org][gnu.org]]  ..........[[https://www.gnu.org/software/emacs/tour][Guided Tour]]
   Get help from Emacs users .............................[[https://lists.gnu.org/mailman/listinfo/help-gnu-emacs][Mailing list]]
   Read the extensive documentation .....................[[info:emacs][Documentation]]
+
+#+BEGIN: block-update-time :format "on %m/%d/%Y at %H:%M"
+*Server status*
+  as3mxml-ls ([[_][Actionscript]]) ................................. [[elisp:(lsp-install-server nil 'as3mxml-ls)][Install]]
+  ada-ls ([[_][Ada]]) .................................. [[elisp:(lsp-install-server nil 'ada-ls)][Manual installation]]
+  angular-ls ([[_][Html, Typescript]]) ........................... [[elisp:(lsp-install-server nil 'angular-ls)][Installed]]
+  bash-ls ([[_][Bash]]) ............................................. [[elisp:(lsp-install-server nil 'bash-ls)][Update]]
+  clangd ([[_][C, C++, Objc]]) ................................... [[elisp:(lsp-install-server nil 'clangd)][Installed]]
+  clojure-lsp ([[_][Clojure, Clojurec, Clojurescript]]) ............. [[elisp:(lsp-install-server nil 'clojure-lsp)][Update]]
+  cmakels ([[_][Cmake]]) ............................... [[elisp:(lsp-install-server nil 'cmakels)][Manual installation]]
+  scry ([[_][Crystal]]) ................................ [[elisp:(lsp-install-server nil 'scry)][Manual installation]]
+  csharp ([[_][Csharp, Csharp-Tree-Sitter]]) ....................... [[elisp:(lsp-install-server nil 'csharp)][Install]]
+  css-ls ([[_][Css, Less, Less-Css, Sass, Scss]]) ................... [[elisp:(lsp-install-server nil 'css-ls)][Update]]
+  serve-d ([[_][D]]) ................................... [[elisp:(lsp-install-server nil 'serve-d)][Manual installation]]
+  dhallls ([[_][Dhall]]) ............................... [[elisp:(lsp-install-server nil 'dhallls)][Manual installation]]
+  dockerfile-ls ([[_][Dockerfile]]) ................................. [[elisp:(lsp-install-server nil 'dockerfile-ls)][Update]]
+  elm-ls ([[_][Elm]]) .............................................. [[elisp:(lsp-install-server nil 'elm-ls)][Install]]
+  elixir-ls ([[_][Elixir]]) ............................ [[elisp:(lsp-install-server nil 'elixir-ls)][Manual installation]]
+  erlang-ls ([[_][Erlang]]) ............................ [[elisp:(lsp-install-server nil 'erlang-ls)][Manual installation]]
+  eslint ([[_][ESlint]]) ............................................ [[elisp:(lsp-install-server nil 'eslint)][Update]]
+  fortls ([[_][F90, Fortran]]) ......................... [[elisp:(lsp-install-server nil 'fortls)][Manual installation]]
+  fsac ([[_][Fsharp]]) .............................................. [[elisp:(lsp-install-server nil 'fsac)][Update]]
+  gdscript ([[_][Gdscript]]) ..................................... [[elisp:(lsp-install-server nil 'gdscript)][Installed]]
+  gopls ([[_][Go, Go-Dot-Mod]]) ........................ [[elisp:(lsp-install-server nil 'gopls)][Manual installation]]
+  hack ([[_][Hack]]) ................................... [[elisp:(lsp-install-server nil 'hack)][Manual installation]]
+  groovy-ls ([[_][Groovy]]) ...................................... [[elisp:(lsp-install-server nil 'groovy-ls)][Installed]]
+  haxe ([[_][Haxe]]) ............................................. [[elisp:(lsp-install-server nil 'haxe)][Installed]]
+  jdtls ([[_][Java, Jdee]]) ......................................... [[elisp:(lsp-install-server nil 'jdtls)][Update]]
+  jsts-ls ([[_][Missing]]) ......................................... [[elisp:(lsp-install-server nil 'jsts-ls)][Install]]
+  ts-ls ([[_][Missing]]) ............................................ [[elisp:(lsp-install-server nil 'ts-ls)][Update]]
+  flow-ls ([[_][Missing]]) ............................. [[elisp:(lsp-install-server nil 'flow-ls)][Manual installation]]
+  deno-ls ([[_][Missing]]) ............................. [[elisp:(lsp-install-server nil 'deno-ls)][Manual installation]]
+  json-ls ([[_][Json]]) ............................................. [[elisp:(lsp-install-server nil 'json-ls)][Update]]
+  kotlin-ls ([[_][Kotlin]]) ............................ [[elisp:(lsp-install-server nil 'kotlin-ls)][Manual installation]]
+  emmy-lua ([[_][Lua]]) ................................ [[elisp:(lsp-install-server nil 'emmy-lua)][Manual installation]]
+  lua-language-server ([[_][Lua]]) .................................. [[elisp:(lsp-install-server nil 'lua-language-server)][Update]]
+  lsp-lua-lsp ([[_][Lua]]) ............................. [[elisp:(lsp-install-server nil 'lsp-lua-lsp)][Manual installation]]
+  unified ([[_][Markdown]]) ............................ [[elisp:(lsp-install-server nil 'unified)][Manual installation]]
+  nimls ([[_][Nim]]) ................................... [[elisp:(lsp-install-server nil 'nimls)][Manual installation]]
+  rnix-lsp ([[_][Nix]]) ................................ [[elisp:(lsp-install-server nil 'rnix-lsp)][Manual installation]]
+  ocaml-ls ([[_][Reason, Caml, Tuareg]]) ............... [[elisp:(lsp-install-server nil 'ocaml-ls)][Manual installation]]
+  ocaml-lsp-server ([[_][Reason, Caml, Tuareg]]) ....... [[elisp:(lsp-install-server nil 'ocaml-lsp-server)][Manual installation]]
+  perl-language-server ([[_][Perl, Cperl]]) ...................... [[elisp:(lsp-install-server nil 'perl-language-server)][Installed]]
+  php-ls ([[_][Missing]]) ........................................ [[elisp:(lsp-install-server nil 'php-ls)][Installed]]
+  iph ([[_][Missing]]) ............................................. [[elisp:(lsp-install-server nil 'iph)][Install]]
+  serenata ([[_][PHP (Serenata)]]) ..................... [[elisp:(lsp-install-server nil 'serenata)][Manual installation]]
+  phpactor ([[_][Phpactor]]) ........................... [[elisp:(lsp-install-server nil 'phpactor)][Manual installation]]
+  pwsh-ls ([[_][Powershell]]) ...................................... [[elisp:(lsp-install-server nil 'pwsh-ls)][Install]]
+  pyls ([[_][Python, Cython]]) ................................... [[elisp:(lsp-install-server nil 'pyls)][Installed]]
+  pursls ([[_][Purescript]]) ....................................... [[elisp:(lsp-install-server nil 'pursls)][Install]]
+  lsp-r ([[_][Ess-R]]) ................................. [[elisp:(lsp-install-server nil 'lsp-r)][Manual installation]]
+  rf-intellisense ([[_][Robot]]) ....................... [[elisp:(lsp-install-server nil 'rf-intellisense)][Manual installation]]
+  rls ([[_][Rust, Rustic]]) ...................................... [[elisp:(lsp-install-server nil 'rls)][Installed]]
+  rust-analyzer ([[_][Rust, Rustic]]) ............................... [[elisp:(lsp-install-server nil 'rust-analyzer)][Update]]
+  ruby-ls ([[_][Ruby, Enh-Ruby]]) ................................ [[elisp:(lsp-install-server nil 'ruby-ls)][Installed]]
+  sorbet-ls ([[_][Ruby, Enh-Ruby]]) .................... [[elisp:(lsp-install-server nil 'sorbet-ls)][Manual installation]]
+  digestif ([[_][Plain-Tex, Latex, Context, Texinfo]]) . [[elisp:(lsp-install-server nil 'digestif)][Manual installation]]
+  texlab ([[_][Plain-Tex, Latex]]) ..................... [[elisp:(lsp-install-server nil 'texlab)][Manual installation]]
+  tfls ([[_][Terraform]]) .............................. [[elisp:(lsp-install-server nil 'tfls)][Manual installation]]
+  valals ([[_][Vala]]) ................................. [[elisp:(lsp-install-server nil 'valals)][Manual installation]]
+  lsp-verilog ([[_][Verilog]]) ......................... [[elisp:(lsp-install-server nil 'lsp-verilog)][Manual installation]]
+  html-ls ([[_][Html, Sgml, Mhtml, Web]]) ........................... [[elisp:(lsp-install-server nil 'html-ls)][Update]]
+  vls ([[_][Vue]]) ................................................. [[elisp:(lsp-install-server nil 'vls)][Install]]
+  lsp-vhdl ([[_][Vhdl]]) ............................... [[elisp:(lsp-install-server nil 'lsp-vhdl)][Manual installation]]
+  vimls ([[_][Vimrc]]) ............................................. [[elisp:(lsp-install-server nil 'vimls)][Install]]
+  xmlls ([[_][XML]]) ................................................ [[elisp:(lsp-install-server nil 'xmlls)][Update]]
+  yamlls ([[_][Yaml]]) ............................................. [[elisp:(lsp-install-server nil 'yamlls)][Install]]
+  sqls ([[_][Sql]]) .................................... [[elisp:(lsp-install-server nil 'sqls)][Manual installation]]
+  svelte-ls ([[_][Svelte]]) ........................................ [[elisp:(lsp-install-server nil 'svelte-ls)][Install]]
+  steep-ls ([[_][Ruby, Enh-Ruby]]) ............................... [[elisp:(lsp-install-server nil 'steep-ls)][Installed]]
+  zls ([[_][Missing]]) ................................. [[elisp:(lsp-install-server nil 'zls)][Manual installation]]
+
+#+END:
 
 *Quick commands*                                 /C: Control, M: alt or ⌘/
 
@@ -59,8 +133,3 @@
  [[elisp:(package-install 'popup)][popup]] .................................. Visual popup user interface
 
                                  /[[elisp:(scroll-down 28)][2/2]] /
-
-#+BEGIN: block-update-time :format "on %m/%d/%Y at %H:%M"
-=Last= *block* update at: on 04/19/2021 at 23:32
-   
-#+END:
