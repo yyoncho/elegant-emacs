@@ -32,12 +32,12 @@
 
 
 ;; Font and frame size
-(set-face-font 'default "Roboto Mono Light 12")
-(setq default-frame-alist
-      (append (list '(width  . 72) '(height . 40)
-                    '(vertical-scroll-bars . nil)
-                    '(internal-border-width . 24)
-                    '(font . "Roboto Mono Light 12"))))
+;; (set-face-font 'default "Roboto Mono Light 12")
+;; (setq default-frame-alist
+;;       (append (list '(width  . 72) '(height . 40)
+;;                     '(vertical-scroll-bars . nil)
+;;                     '(internal-border-width . 24)
+;;                     '(font . "Roboto Mono Light 12"))))
 (set-frame-parameter (selected-frame)
                      'internal-border-width 24)
 
